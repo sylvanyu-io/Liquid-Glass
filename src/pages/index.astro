@@ -1,0 +1,52 @@
+---
+import LiquidGlassCanvasIsland from '../components/labs/LiquidGlassCanvasIsland.astro';
+import LiquidGlassIsland from '../components/labs/LiquidGlassIsland.astro';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="SVG and WebGL experiments for refractive liquid glass." />
+    <title>Liquid Glass — SVG and WebGL Experiments</title>
+  </head>
+  <body>
+    <main>
+      <header>
+        <p>LIQUID GLASS</p>
+        <h1>Two ways to build a refractive lens.</h1>
+        <p>
+          An inspectable SVG displacement-map implementation and a Three.js/WebGL shader pass.
+          Both expose the same material questions: refraction, chroma, blur, tint, and edge light.
+        </p>
+      </header>
+      <section>
+        <h2>SVG / DOM filter</h2>
+        <LiquidGlassIsland />
+      </section>
+      <section>
+        <h2>Canvas / WebGL shader</h2>
+        <LiquidGlassCanvasIsland />
+      </section>
+      <footer>
+        <a href="https://github.com/sylvanyu-io/Liquid-Glass">GitHub</a>
+      </footer>
+    </main>
+  </body>
+</html>
+
+<style is:global>
+  :root { --bg: #111312; --surface: #1b1e1b; --line: #353a35; --text: #eef2ea; --muted: #a6ada2; --accent: #b8ed81; }
+  * { box-sizing: border-box; }
+  body { margin: 0; color: var(--text); background: var(--bg); font-family: ui-sans-serif, system-ui, sans-serif; }
+  main { width: min(1180px, calc(100% - 32px)); margin: 0 auto; padding: 28px 0 64px; }
+  header { max-width: 740px; margin: 56px 0 44px; }
+  header p:first-child { color: var(--accent); font: 12px ui-monospace, monospace; letter-spacing: .12em; }
+  h1 { margin: 12px 0; font-size: clamp(36px, 6vw, 72px); letter-spacing: -.04em; line-height: 1; }
+  header p:last-child { max-width: 60ch; color: var(--muted); line-height: 1.65; }
+  section + section { margin-top: 56px; }
+  h2 { margin: 0 0 14px; font-size: 18px; }
+  footer { margin-top: 24px; font: 13px ui-monospace, monospace; }
+  footer a { color: var(--accent); }
+</style>
